@@ -13,7 +13,7 @@ UTF8Text = Text(collation="utf8mb4_unicode_ci", convert_unicode=True)
 
 def create_db():
     db = _mysql.connect(db_host, user=db_user, passwd=db_pass)
-    db.query("CREATE DATABASE IF NOT EXISTS `twitter-dataset`;")
+    db.query("CREATE DATABASE IF NOT EXISTS `twitter-political-dataset`;")
 
 
 create_db()
