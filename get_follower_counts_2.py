@@ -9,6 +9,8 @@ import json
 import time
 import csv
 import logging
+from random import SystemRandom
+
 
 #
 # make sure cmd line argument is correct
@@ -66,11 +68,15 @@ f.close()
 ###############################################################
 logging.info('fetching followers_count\'s and writing to file...')
 timestr = time.strftime("%Y%m%d-%H%M%S")
-filename = "followers_counts_%s_%s.csv" % (timestr, start_num)
+filename = "followers_counts_%s_r.csv" % timestr
 nf = open(filename, 'w')
 wtr = csv.writer(nf, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL, lineterminator='\n')
 
-for u in u_ids:
+cryptogen = SystemRandom()
+max_index = len(u_ids) - 1
+
+while True:
+    u = u_ids[cryptogen.randrange(max_index)]
     timestr = time.strftime("%Y%m%d-%H%M%S")
     try:
         user = api.get_user(u)
