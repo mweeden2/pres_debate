@@ -8,6 +8,7 @@ import tweepy
 import json
 import time
 import csv
+import logging
 
 
 #
@@ -24,6 +25,13 @@ if len(sys.argv) == 2:
     except ValueError:
         print usage
         sys.exit()
+
+#
+# set up logging
+###############################################################
+logging.basicConfig(level=logging.INFO, filename="logfile.txt", filemode="a+",
+                    format="%(asctime)-15s %(levelname)-8s %(message)s")
+logging.info("hello")
 
 #
 # set up tweepy access
@@ -43,7 +51,7 @@ api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 # read in user ids to fetch follower_count's of
 ###############################################################
 
-print 'reading user ids...'
+logging.info('reading user ids...')
 f = open('../data/u_id.txt', 'rb')
 u_ids = []
 count = 0
@@ -57,7 +65,7 @@ f.close()
 #
 # fetch new followers_count and write to csv
 ###############################################################
-print 'fetching followers_count\'s and writing to file...'
+logging.info('fetching followers_count\'s and writing to file...')
 timestr = time.strftime("%Y%m%d-%H%M%S")
 filename = "followers_counts_%s_%s.csv" % (timestr, start_num)
 nf = open(filename, 'w')
