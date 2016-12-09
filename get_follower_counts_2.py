@@ -8,7 +8,7 @@ import tweepy
 import json
 import time
 import csv
-
+import logging
 
 #
 # make sure cmd line argument is correct
