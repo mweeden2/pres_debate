@@ -73,10 +73,10 @@ nf = open(filename, 'w')
 wtr = csv.writer(nf, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL, lineterminator='\n')
 
 cryptogen = SystemRandom()
-max_index = len(u_ids) - 1
 
 while True:
-    u = u_ids[cryptogen.randrange(max_index)]
+    u = u_ids[cryptogen.randrange(len(u_ids)-1)]
+    u_ids.remove(u)
     timestr = time.strftime("%Y%m%d-%H%M%S")
     try:
         user = api.get_user(u)
