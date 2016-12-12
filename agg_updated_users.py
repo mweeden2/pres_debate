@@ -15,7 +15,7 @@ agg_rows = {}
 print 'getting lists of fetched users/fcs...'
 path = "../data/"
 for filename in os.listdir(path):
-    if filename.startswith('followers_counts') and filename.count('-') == 1:
+    if filename.startswith('followers_counts') and filename.endswith('r.csv'):
         print '  ' + filename
         fn = "../data/" + filename
         f = open(fn, 'rb')
