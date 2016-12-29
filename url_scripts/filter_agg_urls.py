@@ -21,7 +21,7 @@ else:
 f = open(filename, 'rb')
 rdr = csv.reader(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL, lineterminator='\n')
 
-lines = (r for r in rdr if r[1]!=0)
+lines = (r for r in rdr if r[1]!="0")
 
 # write aggregate tweet url list
 timestr = time.strftime("%Y%m%d-%H%M%S")
